@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bart-yellapu-project5/static/css/main.27fd15f6.chunk.css",
+    "main.js": "/bart-yellapu-project5/static/js/main.d9dff1c5.chunk.js",
+    "main.js.map": "/bart-yellapu-project5/static/js/main.d9dff1c5.chunk.js.map",
+    "runtime-main.js": "/bart-yellapu-project5/static/js/runtime-main.8d1a8581.js",
+    "runtime-main.js.map": "/bart-yellapu-project5/static/js/runtime-main.8d1a8581.js.map",
+    "static/js/2.9decf9bb.chunk.js": "/bart-yellapu-project5/static/js/2.9decf9bb.chunk.js",
+    "static/js/2.9decf9bb.chunk.js.map": "/bart-yellapu-project5/static/js/2.9decf9bb.chunk.js.map",
+    "index.html": "/bart-yellapu-project5/index.html",
+    "precache-manifest.3aacb816451319bf982d546edca488c1.js": "/bart-yellapu-project5/precache-manifest.3aacb816451319bf982d546edca488c1.js",
+    "service-worker.js": "/bart-yellapu-project5/service-worker.js",
+    "static/css/main.27fd15f6.chunk.css.map": "/bart-yellapu-project5/static/css/main.27fd15f6.chunk.css.map",
+    "static/js/2.9decf9bb.chunk.js.LICENSE.txt": "/bart-yellapu-project5/static/js/2.9decf9bb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8d1a8581.js",
+    "static/js/2.9decf9bb.chunk.js",
+    "static/css/main.27fd15f6.chunk.css",
+    "static/js/main.d9dff1c5.chunk.js"
+  ]
+}
