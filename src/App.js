@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import HeroCard from "./HeroCard";
+import axios from "axios";
 
-function App() {
-  return (
+class App extends Component {
+
+  // ComponentDidMount is used for fetching the api. 
+
+  componentDidMount(){
+    axios
+      .get("https://superheroapi.com/api/10158549574959596/search/batman")
+      .then((response) => {
+        console.log(response.data)
+      })
+  
+      
+ 
+  }
+  render() {
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+      <input type ="text" placeholder = "search by name" className = "searchBar" ></input>
+
     </div>
-  );
+
+    )
+  }
 }
 
 export default App;
