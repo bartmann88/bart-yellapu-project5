@@ -85,7 +85,7 @@ class App extends Component {
               </div>
             ))
           ) : (
-            <p className="tryAgain">Try Another Option</p>
+            <p className="tryAgain">Try Another Character...</p>
           )}
         </div>
       </div>
