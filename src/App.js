@@ -1,7 +1,11 @@
+// Import Statements
+
 import React, { Component } from "react";
 import "./App.css";
 import HeroCard from "./HeroCard";
 import axios from "axios";
+
+// Initializing Class Component
 
 class App extends Component {
   constructor() {
@@ -9,74 +13,80 @@ class App extends Component {
     this.state = {
       query: "",
       showCard: false,
-      name: "",
-      image: "",
-      strength: "",
-      intelligence: "",
-      speed: "",
-      durability: "",
-      power: "",
-      combat: "",
-      fullName: "",
-      alterEgo: "",
-      publisher: "",
-      alignment: "",
-      placeOfBirth: "",
+      apiData: [],
+      loading: false,
     };
-
-    // BInding function
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({ query: event.target.value });
-  }
+  };
 
-  handleSearch() {
-    this.setState({ showCard: true });
+  handleSearch = (event) => {
+    event.preventDefault();
+    this.setState({ showCard: true, loading: true });
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/10158549574959596/search/${this.state.query}`
+        `https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/10222600563671771
+/search/${this.state.query}`
       )
       .then((response) =>
-        response.data.results.map((val) => {
-          console.log(val);
+        this.setState({
+          apiData: response.data.results,
+          loading: false,
         })
       );
-  }
+  };
 
   render() {
     return (
       <div className="App">
-        <input
-          type="text"
-          placeholder="search by name"
-          className="searchBar"
-          value={this.state.query}
-          onChange={this.handleChange}
-        ></input>
-        <button className="searchBtn" onClick={this.handleSearch}>
-          Search
-        </button>
-        <div className={this.state.showCard ? "show" : "hide"}>
-          <HeroCard
-            // Biography
-            image={this.state.image}
-            name="{this.state.name}"
-            fullName={this.state.fullName}
-            placeOfBirth={this.state.placeOfBirth}
-            alterEgo={this.state.alterEgo}
-            publisher={this.state.publisher}
-            alignment={this.state.alignment}
-            // Powerstats
-            intelligence={this.state.intelligence}
-            strength={this.state.strength}
-            speed={this.state.speed}
-            durability={this.state.durability}
-            power={this.state.power}
-            combat={this.state.combat}
-          />
+        <div className="headerContainer">
+          <h1>Concise Comic Compendium</h1>
+          <p className="introContent">Who is Your Favourite Character?</p>
+          <form className="searchToggle">
+            <input
+              type="text"
+              placeholder="Enter Name"
+              className="searchBar"
+              value={this.state.query}
+              onChange={this.handleChange}
+            />
+            <button className="searchBtn" onClick={this.handleSearch}>
+              Search
+            </button>
+          </form>
+
+          {this.state.loading ? (
+            <p className="loadingMessage">Loading Please wait...</p>
+          ) : null}
+        </div>
+
+        <div className="heroContainer">
+          {this.state.apiData ? (
+            this.state.apiData.map((val) => (
+              <div className={this.state.showCard ? "show" : "hide"}>
+                <HeroCard
+                  // Biography
+                  image={val.image.url}
+                  alt={`${val.biography["full-name"]} ${val.name} Image`}
+                  name={val.name}
+                  fullName={`Full Name: ${val.biography["full-name"]}`}
+                  publisher={`Publisher: ${val.biography.publisher}`}
+                  alignment={`Alignment: ${val.biography.alignment}`}
+                  // Powerstats
+                  intelligence={`Inteligence - ${val.powerstats.intelligence}`}
+                  strength={`Strength - ${val.powerstats.strength}`}
+                  speed={`Speed - ${val.powerstats.speed}`}
+                  durability={`Durability - ${val.powerstats.durability}`}
+                  power={`Power - ${val.powerstats.power}`}
+                  combat={`Combat - ${val.powerstats.combat}`}
+                />
+              </div>
+            ))
+          ) : (
+            <p className="tryAgain">Try Another Option</p>
+          )}
         </div>
       </div>
     );
