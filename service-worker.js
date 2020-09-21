@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bart-yellapu-project5/precache-manifest.b5f358a99e7e3643a0f1b2d2dba200eb.js"
+  "/bart-yellapu-project5/precache-manifest.82edfe32ed29ebc19aad2320717f574c.js"
 );
 
 self.addEventListener('message', (event) => {
