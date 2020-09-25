@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 class HeroCard extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="cardContainer">
